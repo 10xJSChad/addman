@@ -49,6 +49,7 @@ int            addons_count = 0;
 
 void* xmalloc(size_t size) {
     void* ptr = malloc(size);
+
     if (ptr == NULL)
         ERROR_EXIT("Failed to allocate memory\n");
 
@@ -58,6 +59,7 @@ void* xmalloc(size_t size) {
 
 void* xcalloc(size_t nmemb, size_t size) {
     void* ptr = calloc(nmemb, size);
+
     if (ptr == NULL)
         ERROR_EXIT("Failed to allocate memory\n");
 
@@ -113,6 +115,7 @@ bool is_ignored_file(char* file) {
 
 char* read_file(char* path) {
     FILE* file = fopen(path, "r");
+
     if (file == NULL)
         ERROR_EXIT("Failed to open file %s\n", path);
 
@@ -404,6 +407,7 @@ void Addon_CopyToOutput(struct Addon* addon) {
         if (entry->d_type == DT_DIR) {
             char new_src[PATH_MAX] = {0};
             char new_dest[PATH_MAX] = {0};
+
             path_join(new_src, addon->build_dir, entry->d_name);
             path_join(new_dest, output_dir, entry->d_name);
 
