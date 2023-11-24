@@ -125,7 +125,6 @@ char* read_file(char* path) {
     fclose(file);
 
     return buffer;
-
 }
 
 
